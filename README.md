@@ -5,7 +5,7 @@
 
 - 作者:空气  
 - QQ:531833998  
-- QQ群：650547109  欢迎交流，也欢迎定制系统，全职在家提供技术。
+- QQ群：650547109  欢迎交流，也欢迎定制系统，全职提供技术。
 - 版权：好学科技所有
 - 详细文档地址 https://www.heibaiketang.com/note/cover/8.html
 - 后台演示地址 http://testlaravel.haoxuekeji.cn/admin 
