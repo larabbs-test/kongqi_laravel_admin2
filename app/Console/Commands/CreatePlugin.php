@@ -762,9 +762,9 @@ Route::namespace(\'Admin\')->group(function ($route) {
 use Illuminate\Support\Facades\Route;
 
 //绑定域名
-$domain = config_cache(\'' . $module . '.domain\');
+$domain = config_cache_default(\'' . $module . '.domain\');
 //路径
-$path = config_cache(\'' . $module . '.path\', \'' . $module . '\');
+$path = config_cache_default(\'' . $module . '.path\', \'' . $module . '\');
 
 //如果绑定了域名则走域名，如果绑定了路径，则走路径，只能2选一, 如果你需要多个，那你下面改下即可
 if ($domain) {
