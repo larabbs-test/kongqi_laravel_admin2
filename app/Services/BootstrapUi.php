@@ -10,7 +10,6 @@
 // | Author: kongqi <531833998@qq.com>`
 // +----------------------------------------------------------------------
 
-
 namespace App\Services;
 
 class BootstrapUi implements Ui
@@ -151,7 +150,7 @@ class BootstrapUi implements Ui
             }
 
         } else {
-            $v['value'] = $v['value']??($v['default']??'');
+            $v['value'] = $v['value'] ?? ($v['default'] ?? '');
         }
 
         $html = '<div class="form-group">';
@@ -166,7 +165,7 @@ class BootstrapUi implements Ui
             case 'datetime':
                 $v['type'] = 'text';
                 $v['attr'] = $v['attr'] ?? '';
-                $v['attr'] = $v['attr'] . ' data-lang=' . env('lang');
+                $v['attr'] = $v['attr'] . ' data-lang="' . env('lang') . '" ';
                 $html .= str_replace("\r\n", "", $this->input($v));
                 break;
             case 'hidden':
@@ -301,7 +300,7 @@ class BootstrapUi implements Ui
         $item['accept_type'] = $item['accept_type'] ?? '';//前端接受的文件上传类型，默认是images
         $item['group_id'] = $item['group_id'] ?? '';//分组ID
         $item['place_url'] = $item['place_url'] ?? '';//单独设置文件空间地址
-        $up_attr = 'data-value_name='.$item['value_name'];
+        $up_attr = 'data-value_name=' . $item['value_name'];
         if ($item['upload_url']) {
             $up_attr .= ' data-upload_url=' . $item['upload_url'] . ' ';
         }
@@ -312,7 +311,7 @@ class BootstrapUi implements Ui
             $up_attr .= ' data-accept_type=' . $item['accept_type'] . ' ';
         }
 
-        $place_attr = 'data-value_name='.$item['value_name'];
+        $place_attr = 'data-value_name=' . $item['value_name'];
         if ($item['place_url']) {
             $place_attr .= ' data-place_url=' . $item['place_url'] . ' ';
         }
@@ -375,6 +374,7 @@ class BootstrapUi implements Ui
                 </div>';
         return $html;
     }
+
     public function color($item, $hasLabel = 1, $class = "form-control")
     {
         $item['id'] = $item['id'] ?? $item['field'];
@@ -384,14 +384,14 @@ class BootstrapUi implements Ui
         if ($hasLabel) {
             $html .= $this->label($item);
         }
-        $item['event']='color';
+        $item['event'] = 'color';
         $item['type'] = 'text';
-        $item['attr']=$item['attr']??'';
-        $item['attr']=$item['attr'].' data-obj="color-input-'.$item['id'].'"';
+        $item['attr'] = $item['attr'] ?? '';
+        $item['attr'] = $item['attr'] . ' data-obj="color-input-' . $item['id'] . '"';
         $html .= ' <div class="open-icon input-group" id="' . (md5($item['field'])) . '">
                     ' . $this->input($item, 0) . '
                     <div class="input-group-prepend">
-                      <div class="color-warp" id="color-input-'. $item['id'].'"></div>
+                      <div class="color-warp" id="color-input-' . $item['id'] . '"></div>
                    </div>
                 </div>';
         return $html;
@@ -415,7 +415,7 @@ class BootstrapUi implements Ui
         $item['accept_type'] = $item['accept_type'] ?? '';//前端接受的文件上传类型，默认是images
         $item['group_id'] = $item['group_id'] ?? '';//分组ID
         $item['place_url'] = $item['place_url'] ?? '';//单独设置文件空间地址
-        $up_attr = 'data-value_name='.$item['value_name'];
+        $up_attr = 'data-value_name=' . $item['value_name'];
         if ($item['upload_url']) {
             $up_attr .= ' data-upload_url=' . $item['upload_url'] . ' ';
         }
@@ -429,7 +429,7 @@ class BootstrapUi implements Ui
             $up_attr .= ' data-group_id=' . $item['group_id'] . ' ';
         }
 
-        $place_attr =  'data-value_name='.$item['value_name'];;
+        $place_attr = 'data-value_name=' . $item['value_name'];;
         if ($item['place_url']) {
             $place_attr .= ' data-place_url=' . $item['place_url'] . ' ';
         }
@@ -540,7 +540,7 @@ class BootstrapUi implements Ui
         lay-verify="' . ($item['verify'] ?? '') . '" 
         class="' . $class . ' ' . ($item['addClass'] ?? '') . '" 
         id="input-' . ($item['id']) . '" 
-        placeholder="' . lang($item['tips'] ?: $item['name']) . '">' . $item['value']  . '</textarea>';
+        placeholder="' . lang($item['tips'] ?: $item['name']) . '">' . $item['value'] . '</textarea>';
         return $html;
     }
 
@@ -554,7 +554,7 @@ class BootstrapUi implements Ui
             $html .= $this->label($item);
         }
 
-        $html .= '<div class="radio-tips form-control " id="'.$item['id'].'" data-tips="' . lang($item['tips']) . '">';
+        $html .= '<div class="radio-tips form-control " id="' . $item['id'] . '" data-tips="' . lang($item['tips']) . '">';
         if (!empty($item['data'])) {
             foreach ($item['data'] as $k => $v) {
                 $html .= '<div class="custom-control custom-radio ' . ($inline ? 'custom-control-inline' : '') . '">';
@@ -589,7 +589,7 @@ class BootstrapUi implements Ui
         if ($hasLabel) {
             $html .= $this->label($item);
         }
-        $html .= '<div><div class="radio-tips form-control "  id="'.$item['id'].'" data-tips="' . lang($item['tips']) . '">';
+        $html .= '<div><div class="radio-tips form-control "  id="' . $item['id'] . '" data-tips="' . lang($item['tips']) . '">';
         if (!empty($item['data'])) {
             foreach ($item['data'] as $k => $v) {
 
