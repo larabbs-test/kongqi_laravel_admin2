@@ -152,7 +152,7 @@ class AdminController extends BaseCurlController
                 'field' => 'is_root',
                 'type' => 'radio',
                 'name' => '是否超级管理员',
-                'on' => 0,
+                'default' => 0,
                 'data' => $this->uiService->trueFalseData()
 
             ],
