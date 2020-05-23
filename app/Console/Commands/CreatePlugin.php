@@ -326,6 +326,8 @@ use App\ExtendClass\Plugin;
 
 class Menu
 {
+    public static \$name = '';//根级菜单名称
+    public static \$icon = 'fas fa fa-bold';//根级菜单图标
     public static function up()
     {
         /**
