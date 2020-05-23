@@ -311,7 +311,7 @@ trait ModelCurlTrait
     {
         $show = $this->editWhere()->findOrFail($id);
         if (!$show) {
-            return $this->blade404(lang('数据不存在'));
+            return $this->bladeError(lang('数据不存在'));
         }
 
         $this->editGate($show);
@@ -411,7 +411,7 @@ trait ModelCurlTrait
     {
         $show = $this->showWhere()->find($id);
         if (!$show) {
-            return $this->blade404(lang('数据不存在'));
+            return $this->bladeError(lang('数据不存在'));
         }
         $this->showGate($show);
         $this->shareData(['show' => $show]);
