@@ -12,7 +12,7 @@ class AdminController extends BaseCurlController
 {
     //页面信息
     public $pageName = '账号';
-    public $denyCommonBladePathActionName=['password'];
+    public $denyCommonBladePathActionName = ['password'];
 
     //1.设置模型
     public function setModel()
@@ -144,7 +144,7 @@ class AdminController extends BaseCurlController
                 'verify' => $show ? '' : 'rq',
                 // 'remove'=>$show?'1':0,//1表示移除，编辑页面不出现
                 'value' => '',
-                'mark' => $show ?'不填表示不修改密码':'',
+                'mark' => $show ? '不填表示不修改密码' : '',
 
             ],
 
@@ -214,35 +214,38 @@ class AdminController extends BaseCurlController
             $model->syncRoles($role);
         }
     }
+
     //列表数据附加信息
     public function setListOutputItemExtend($item)
     {
-        $item->roles_name=implode(",",$item->roles->pluck('cn_name')->toArray());
+        $item->roles_name = implode(",", $item->roles->pluck('cn_name')->toArray());
         return $item;
     }
+
     //加载with
     public function setModelRelaction($model)
     {
         return $model->with('roles');
     }
+
     public function password()
     {
 
         $this->buildUi();
-        $this->uiBlade['form']=[
+        $this->uiBlade['form'] = [
             [
                 'field' => 'old_password',
                 'type' => 'text',
                 'name' => '旧密码',
                 'must' => 1,
-                'verify' =>  'rq',
+                'verify' => 'rq',
             ],
             [
                 'field' => 'password',
                 'type' => 'text',
                 'name' => '新密码',
                 'must' => 1,
-                'verify' =>  'rq',
+                'verify' => 'rq',
             ],
         ];
         $this->createBladeHtml();
@@ -260,15 +263,14 @@ class AdminController extends BaseCurlController
             return $this->checkFormErrorFormat($error);
         };
         //检验密码是否正确
-        $old_password=$request->input('old_password');
-        $new_password=$request->input('password');
-        $admin=admin();
-        if(Hash::check($old_password,$admin->password)){
+        $old_password = $request->input('old_password');
+        $new_password = $request->input('password');
+        $admin = admin();
+        if (Hash::check($old_password, $admin->password)) {
             //进行更新
-            $admin->password=($new_password);
-            $r= $admin->save();
-            if($r)
-            {
+            $admin->password = ($new_password);
+            $r = $admin->save();
+            if ($r) {
                 $this->insertLog('修改密码成功');
                 return $this->returnSuccessApi('修改密码成功');
             }
@@ -278,9 +280,11 @@ class AdminController extends BaseCurlController
         $this->insertLog('修改密码,旧密码不正确');
         return $this->returnFailApi('旧密码不正确');
     }
-    public function clear(){
+
+    public function clear()
+    {
         //执行数据库迁移
         Artisan::call('cache:clear');
-        return $this->bladeError(lang('清除成功'),'200');
+        return $this->bladeError(lang('清除成功'), '200');
     }
 }

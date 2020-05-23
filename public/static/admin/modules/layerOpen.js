@@ -1,9 +1,9 @@
-layui.define(['layer', 'request', 'utable','loader'], function (exports) {
+layui.define(['layer', 'request', 'utable', 'loader'], function (exports) {
     var $ = layui.$;
     var layer = layui.layer;
     var req = layui.request;
     var table = layui.utable;
-    var loader=layui.loader;
+    var loader = layui.loader;
 
     var layerOpen = {
         open: openLayer,
@@ -120,7 +120,7 @@ layui.define(['layer', 'request', 'utable','loader'], function (exports) {
         openLayer(configs, function (layero, index) {
             var iframeWindow = window['layui-layer-iframe' + index],
                 submit = layero.find('iframe').contents().find("#LAY-form-submit");
-            loader.show();
+
             //监听提交
             iframeWindow.layui.uform.on('submit(LAY-form-submit)', function (data) {
                 submit.attr('disabled', true);
@@ -132,7 +132,7 @@ layui.define(['layer', 'request', 'utable','loader'], function (exports) {
                     layer.msg(field.fail);
                     return false;
                 }
-
+                loader.show();
                 req.post(post_url, field, function (res) {
                     submit.attr('disabled', false);
 
