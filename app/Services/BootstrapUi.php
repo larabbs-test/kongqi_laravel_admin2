@@ -540,7 +540,7 @@ class BootstrapUi implements Ui
         lay-verify="' . ($item['verify'] ?? '') . '" 
         class="' . $class . ' ' . ($item['addClass'] ?? '') . '" 
         id="input-' . ($item['id']) . '" 
-        placeholder="' . lang($item['tips'] ?: $item['name']) . '">' . lang($item['value'] ?? '') . '</textarea>';
+        placeholder="' . lang($item['tips'] ?: $item['name']) . '">' . $item['value']  . '</textarea>';
         return $html;
     }
 
@@ -548,13 +548,13 @@ class BootstrapUi implements Ui
     {
 
         $item['tips'] = $item['tips'] ?? $item['name'];
-
+        $item['id'] = $item['id'] ?? $item['field'];
         $html = '';
         if ($hasLabel) {
             $html .= $this->label($item);
         }
 
-        $html .= '<div class="radio-tips form-control " data-tips="' . lang($item['tips']) . '">';
+        $html .= '<div class="radio-tips form-control " id="'.$item['id'].'" data-tips="' . lang($item['tips']) . '">';
         if (!empty($item['data'])) {
             foreach ($item['data'] as $k => $v) {
                 $html .= '<div class="custom-control custom-radio ' . ($inline ? 'custom-control-inline' : '') . '">';
@@ -579,7 +579,7 @@ class BootstrapUi implements Ui
      */
     public function checkbox($item, $hasLabel = 1, $inline = "1")
     {
-
+        $item['id'] = $item['id'] ?? $item['field'];
         $item['tips'] = $item['tips'] ?? $item['name'];
         if (!is_array($item['value'])) {
             $item['value'] = [];
@@ -589,7 +589,7 @@ class BootstrapUi implements Ui
         if ($hasLabel) {
             $html .= $this->label($item);
         }
-        $html .= '<div><div class="radio-tips form-control " data-tips="' . lang($item['tips']) . '">';
+        $html .= '<div><div class="radio-tips form-control "  id="'.$item['id'].'" data-tips="' . lang($item['tips']) . '">';
         if (!empty($item['data'])) {
             foreach ($item['data'] as $k => $v) {
 
