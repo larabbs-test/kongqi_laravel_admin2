@@ -166,7 +166,7 @@ class ArticleController extends BaseCurlController
                         'name' => '分类',
                         'must' => 1,
                         'verify' => 'rq',
-                        'on' => 0,
+                        'default' => 0,//默认值
                         'data' => array_merge($this->uiService->allDataArr('请选择分类'), $this->uiService->treeData(Category::checked()->get()->toArray(), 0))//树形select
                     ],
                     [
