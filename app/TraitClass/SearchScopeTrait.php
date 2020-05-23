@@ -151,6 +151,7 @@ trait SearchScopeTrait
                 case 'like_sql':
                     $query->whereRaw($v['value']);
                     break;
+
             }
         }
         return $query;

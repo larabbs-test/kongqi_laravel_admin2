@@ -231,7 +231,7 @@ trait ModelCurlTrait
     }
 
     /**
-     * Layui 弹窗默认宽度
+     * Layui 弹窗宽度
      * @return string
      */
     public function layuiOpenWidth()
@@ -240,7 +240,7 @@ trait ModelCurlTrait
     }
 
     /**
-     * Layui 弹窗默认高度
+     * Layui 弹窗高度
      * @return string
      */
     public function layuiOpenHeight()
@@ -364,7 +364,7 @@ trait ModelCurlTrait
      */
     public function showGate($show)
     {
-        return $this->edit($show);
+
     }
 
     /**
@@ -413,6 +413,7 @@ trait ModelCurlTrait
         if (!$show) {
             return $this->blade404(lang('数据不存在'));
         }
+        $this->showGate($show);
         $this->shareData(['show' => $show]);
         return $this->display($this->showShareData($show) ?: []);
     }

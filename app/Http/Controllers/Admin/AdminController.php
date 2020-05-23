@@ -161,7 +161,7 @@ class AdminController extends BaseCurlController
                 'type' => 'radio',
                 'name' => '是否启用',
                 'verify' => '',
-                'on' => 1,
+                'default' => 1,
                 'data' => $this->uiService->trueFalseData()
 
             ],
@@ -170,7 +170,7 @@ class AdminController extends BaseCurlController
                 'type' => 'checkbox',
                 'name' => '角色',
                 'verify' => '',
-                'on' => $show ? $show->roles->pluck('id')->toArray() : [],
+                'value' => $show ? $show->roles->pluck('id')->toArray() : [],
                 'data' => $nrole
 
             ]
