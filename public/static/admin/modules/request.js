@@ -1,7 +1,7 @@
-layui.define(['layer','loader'], function (exports) {
+layui.define(['layer', 'loader'], function (exports) {
     var $ = layui.jquery;
     var layer = layui.layer;
-    var loader=layui.loader;
+    var loader = layui.loader;
     var request = {
         /**
          *
@@ -29,7 +29,7 @@ layui.define(['layer','loader'], function (exports) {
                 headerObj[i] = header[i];
             }
             if (isLoding) {
-               loader.show();
+                loader.show();
             }
 
             $.ajax({
@@ -60,12 +60,17 @@ layui.define(['layer','loader'], function (exports) {
         },
         get: function (url, data, success, fail, complete, header, async, isLoading) {
 
-
+            if (isLoading == undefined) {
+                isLoading = 1;
+            }
             data = data || {};
             return this.ajax(url, data, success, fail, complete, 'get', header, async, isLoading);
         },
         post: function (url, data, success, fail, complete, header, async, isLoading) {
 
+            if (isLoading == undefined) {
+                isLoading = 1;
+            }
             data = data || {};
             return this.ajax(url, data, success, fail, complete, 'post', header, async, isLoading);
         }

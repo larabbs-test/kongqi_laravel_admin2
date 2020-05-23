@@ -132,7 +132,7 @@ layui.define(['layer', 'request', 'utable', 'loader'], function (exports) {
                     layer.msg(field.fail);
                     return false;
                 }
-                loader.show();
+                //loader.show(); loader.show();
                 req.post(post_url, field, function (res) {
                     submit.attr('disabled', false);
 
@@ -151,10 +151,10 @@ layui.define(['layer', 'request', 'utable', 'loader'], function (exports) {
                     callFun && callFun(res)
                 }, function () {
                     submit.attr('disabled', false);
-                    loader.close();
+                    //loader.close();
                 }, function () {
                     submit.attr('disabled', false);
-                    loader.close();
+                    //loader.close();
                 })
 
             });
